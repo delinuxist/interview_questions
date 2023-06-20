@@ -1,8 +1,7 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StringManipulation {
 
@@ -33,8 +32,25 @@ public class StringManipulation {
         }
     }
 
-    public Long countCharactersWithStream(List<Character> charList) {
-        return charList.stream().count();
+    public Map<Character,Long> countCharactersWithStream(List<Character> charList) {
+        Map<Character,Long> characters;
+
+        characters = charList.stream().collect(
+                Collectors.groupingBy(character -> character,Collectors.counting())
+        );
+
+        return characters;
     }
+
+    public List<Character> mostCommonCharacter(List<Character> charList) {
+        Map<Character,Long> characterCount = countCharactersWithStream(charList);
+
+        Optional<Long> max = characterCount.values().stream().max(Comparator.naturalOrder());
+
+        return characterCount.entrySet().stream().filter(c-> Objects.equals(c.getValue(), max.get())).map(Map.Entry::getKey).toList();
+    }
+
+
+
 
 }
