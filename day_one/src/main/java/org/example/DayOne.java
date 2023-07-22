@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.List;
 
-public class Main {
+public class DayOne {
     public static void main(String[] args) {
         StringManipulation stringManipulation = new StringManipulation();
 
