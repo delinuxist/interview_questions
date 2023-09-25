@@ -13,7 +13,7 @@ class BubbleSortTest {
     public void testSimpleBubbleSort() {
         int[] intArray = {20,35,-15,7,55,1,-22};
 
-        int[] result = underTest.sort(intArray);
+        int[] result = underTest.sortAscending(intArray);
 
         int[] expected = {-22,-15,1,7,20,35,55};
 
